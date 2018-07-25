@@ -1,0 +1,137 @@
+@import "../tpl/base.wxss";
+
+.order-container {
+  font-size: 28rpx;
+  color: #212121;
+}
+
+.scrollview {
+  overflow-x: hidden;
+  margin-bottom: 92rpx;
+}
+
+.scrollview>view {
+  background-color: white;
+}
+
+/* 订单产品 */
+.main-products-box {
+  padding-left: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.main-products-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  padding-left: 0;
+  border-bottom: 1rpx solid #D9D9D9; 
+}
+
+.main-products-header .order-status {
+  color: #ACA078;
+}
+
+.products-item-box {
+  display: flex;
+  height: 180rpx;
+  justify-content: space-around;
+  align-items: center; 
+  border-bottom: 1rpx solid #D9D9D9;
+}
+
+.products-item-box:last-child {
+   border-bottom: 0rpx; 
+}
+
+.products-item-box>image {
+   width: 150rpx;  
+   height: 150rpx; 
+}
+
+.products-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;  
+  height: 150rpx;
+}
+.products-item-info>view {
+  padding: 20rpx;
+}
+
+.products-item-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-products-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main-products-footer>view {
+  padding: 10rpx 15rpx;
+  margin: 15rpx 25rpx;
+  margin-left: 0;
+  border-radius: 6rpx;
+  border: 1rpx solid gray;
+}
+
+/* 订单信息 */
+.main-info-box {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+
+.main-info-box>view {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid #E9E9E9;
+  padding: 20rpx;
+  padding-left: 0;
+}
+
+.main-info-box>view>view {
+  padding-bottom: 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.main-info-box>view>view:last-child {
+  padding-bottom: 0rpx;
+}
+
+.main-info-box>view>view>view {
+  width: 150rpx;
+  color: gray;
+}
+
+/* 结算 */
+.order-footer {
+  margin-top: 5rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  font-size: 32rpx;
+}
+
+.footer-total-price {
+  padding-left: 20rpx;
+  color: pink;
+}
+
+.footer-pay {
+  display: flex;
+  width: 200rpx;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-pay.disabled {
+  background: rgba(171,149,109,0.6);
+  pointer-events: none
+}

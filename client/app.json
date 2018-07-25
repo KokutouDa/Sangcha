@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "page/index/index",
+    "page/cart/cart",
+    "page/order/order",
+    "page/ucenter/order-list/order-list"
+  ],
+
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+  }
+}

@@ -1,0 +1,33 @@
+ <import src="../tpl/cart/cart-tpl.wxml" />
+
+<view class="container">
+  <view wx:if="{{cartProducts.length==0}}" class="cart-empty">
+    <view class="cart-tips-hungry">购物车快饿瘪了 T.T</view>
+    <view class="cart-tips-pick">快给我挑选宝贝吧</view>
+    <view class="cart-shopping-box" bindtap="onShoppingTap">
+      <text class="cart-tips-shopping">去逛逛</text>
+    </view>
+  </view>
+
+  <block wx:else>
+    <view class="products-main-box">
+      <template is="cartItem" data="{{cartProducts}}">
+      </template>
+    </view>
+
+    <view class="base-footer-box products-footer">
+      <view class="box-select" bindtap="onAllSelectTap">
+        <image class="icon-select" src="{{isAllSelected?'/image/icon/all@selected.png':'/image/icon/all.png'}}"></image>
+        <text>全选</text>
+      </view>
+      <view class="box-ordering">
+        <view class="price">¥{{productsPrice}}</view>
+        <view class="ordering main-background-color {{hasOneSelected?'':'disabled'}}" 
+        hover-class="{{hasOneSelected?'ordering-hover':''}}"
+        bindtap="onOrderingTap">
+          去结算
+        </view>
+      </view>
+    </view>
+  </block>
+</view> 

@@ -1,0 +1,71 @@
+<view class="container order-container">
+  <view class="import-tips {{canUse?'hidden':''}}">
+    <button open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+  <view class="scrollview">
+    <view class="main-products-box">
+      <view class="main-products-header">
+        <view>丧茶长江路店</view>
+        <view class="order-status">{{orderStatusArr[orderStatus]}}</view>
+      </view>
+      <block wx:for="{{orderProducts}}">
+        <view class="products-item-box">
+          <image src="{{item.img_url}}" mode='aspectFill'></image>
+          <view class="products-item-info">
+            <view class="products-item-top">
+              <view>{{item.name}}</view>
+              <view>x{{item.qty}}</view>
+            </view>
+            <view>
+              <block wx:for="{{item.require}}" wx:for-item="requireValue">
+                <text space='nbsp'>{{requireValue}} </text>
+              </block>
+            </view>
+            <view>¥{{item.price}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class="main-info-box">
+      <view wx:if="{{orderStatus!=0}}">
+        <view>
+          <view>订单编号：</view>
+          <text>{{orderNum}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{orderStatus==0}}">
+        <view>
+          <view>留言：</view>
+          <input placeholder="点击此处留言" bindblur="bindMessage"></input>
+        </view>
+      </view>
+      <view wx:if="{{orderStatus!=0}}">
+        <view>
+          <view>留言：</view>
+          <view>{{message}}</view>
+        </view>
+      </view>
+      <view>
+        <view>
+          <view>商品合计：</view>
+          <text>¥{{productsPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-footer base-footer-box" wx:if="{{orderStatus<2}}">
+    <view  class="footer-total-price">
+      <text>应付：</text>
+      <text>¥{{productsPrice}}</text>
+    </view>
+    <view wx:if="{{orderStatus==0}}" bindtap="onPayTap" class="footer-pay  main-background-color">提交订单</view>
+    <view wx:if="{{orderStatus==1}}" bindtap="onPayTap" 
+    class="footer-pay main-background-color">付款</view>
+  </view>
+  <view class="base-footer-box footer-" wx:if="{{orderStatus>=2}}">
+    
+  </view>
+</view>

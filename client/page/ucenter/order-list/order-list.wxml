@@ -1,0 +1,31 @@
+<!--order-list.wxml-->
+<view class="container">
+  <view class="import-tips {{canUse?'hidden':''}}">
+    <button open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+
+
+  <!--  订单列表  -->
+  <view wx:for="{{orders}}">
+
+    <view class="order-list-box" bindtap="onOrderTap" data-id="{{item.id}}">
+      <view class="order-list-header">
+        <view>订单编号:{{item.order_num}}</view>
+      </view>
+
+      <view class="order-list-main">
+        <image src='{{item.snap_img}}'></image>
+        <view>
+          <view>{{item.snap_name}}</view>
+          <view>共{{item.total_count}}件商品</view>
+        </view>
+        <view class="order-status">{{orderStatusArr[item.status]}}</view>
+      </view>
+
+      <view class="order-list-footer">
+        <view>合计: {{item.total_price}}</view>
+        <view class="footer-pay" wx:if="{{item.status==1}}">付款</view>
+      </view>
+    </view>
+  </view>
+</view>

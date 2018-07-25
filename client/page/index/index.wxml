@@ -1,0 +1,79 @@
+<!-- index.wxml-->
+
+<view class=" container index-container">
+  <view class="main-box">
+    <view class="main-left-box">
+      <view class="left-ucenter" bindtap='onOrderListTap'>
+        <image class="left-ucenter-img" src='/image/order.png'></image>
+        <view>订单</view>
+      </view>
+      <block wx:for="{{category}}">
+        <view class="left-item {{currentID==item.id?'selected':''}}" data-id="{{item.id}}" bindtap='onCategoryTap'>
+          {{item.name}}
+          <view class="num {{item.qty>0?'visible':''}}">{{item.qty}}</view>
+        </view>
+      </block>
+    </view>
+
+    <view class="main-right-box">
+
+      <view class="empty" wx:if="{{products.length==0}}">暂无物品</view>
+      <block wx:else>
+        <block wx:for="{{products}}">
+          <view class="right-item">
+            <image class="right-item-img" src="{{item.img_url}}" mode='aspectFill'></image>
+            <view class="right-item-info">
+              <view>{{item.name}}</view>
+              <view class='right-item-description'>{{item.description?item.description:''}}</view>
+              <view class="right-item-bottom">
+                <view>¥{{item.price}}</view>
+                <view class="bottom-qty-box">
+                  <view class="qty-text {{item.qty>0?'visible':''}}">
+                    {{item.qty}}</view>
+                  <view class="qty-add" data-index='{{index}}' bindtap="onChangeQtyTap">选规格</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <view class="require-box {{isRequire?'visible':''}}">
+        <view class="require-main">
+          <view class="require-title">{{currentProduct.name}}</view>
+          <view class="require-close" bindtap='onCloseTap'>×</view>
+          <view class="require-content" wx:for="{{keys}}" wx:for-item="key" wx:for-index="ind">
+            <view class="require-keys">{{key}}</view>
+            <view class="values-box">
+              <block wx:for="{{values[ind]}}">
+                <view class="values-item {{currentRequire[ind]==item?'values-item-selected':''}}" bindtap="onRequireTap" data-value='{{item}}' data-ind='{{ind}}'>{{item}}</view>
+              </block>
+            </view>
+          </view>
+        </view>
+
+        <view class="require-footer">
+          <view class="requre-footer-price">¥{{currentProduct.price}}</view>
+          <view class="requre-footer-cart" bindtap='onAddTap'>加入购物车</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+
+
+  <view class="base-footer-box footer-box">
+    <view class="footer-left">
+      <view class="footer-cart" bindtap='onCartTap'>
+        <view class="footer-cart-view {{emptyCart?'disable':''}}">
+          <image class="footer-cart-image" src='/image/icon/index-cart.png'></image>
+        </view>
+        <view class="num {{cartNum>=1?'visible':''}}">{{cartNum}}</view>
+      </view>
+
+      <view class="footer-price">¥{{productsPrice}}</view>
+    </view>
+    <view bindtap="onOrderingTap" class="footer-right main-background-color {{productsPrice>0?'':'disable'}}" hover-class="footer-right-hover">去结算</view>
+  </view>
+</view>

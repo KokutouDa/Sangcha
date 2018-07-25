@@ -1,0 +1,33 @@
+.product-box {
+  display: flex;
+  flex-flow:  wrap;
+  margin: 0 20rpx 20rpx 20rpx;
+  justify-content: space-between;
+}
+
+.product-item {
+  margin: 5rpx 0;
+  border-radius: 10rpx;
+  width: 49%; 
+  min-height: 300rpx; 
+  margin-bottom: 10rpx;
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+}
+
+.product-img {
+  margin: 10rpx auto 0 auto;
+  width: 80%;
+  height: 250rpx;
+  border-radius: 10rpx;
+}
+
+.product-name {
+  font-size: 28rpx;
+}
+
+.product-price {
+  font-size: 24rpx;
+  font-weight: bold;
+}
