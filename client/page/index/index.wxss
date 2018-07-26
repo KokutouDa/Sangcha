@@ -233,6 +233,11 @@
   background-color: pink;
 }
 
+.img-add {
+  width: 50rpx;
+  height: 50rpx;
+}
+
 .visible {
   visibility: visible;
 }

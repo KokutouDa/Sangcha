@@ -74,6 +74,8 @@ Page({
   },
 
   onChangeQtyTap: function(event) {
+    console.log("onChangeQtyTap");
+    
     var productsIndex = index.getDataSet(event, 'index');
     var product = this.data.products[productsIndex];
     var userRequire = product.require;
@@ -97,11 +99,10 @@ Page({
       "currentRequire": currentRequire,
       "isRequire": true,
     })
-
-
   },
 
   onRequireTap: function(event) {
+    
     var keysInd = index.getDataSet(event, 'ind');
     var value = index.getDataSet(event, 'value');
     this.data.currentRequire[keysInd] = value;
@@ -112,20 +113,25 @@ Page({
 
   onAddTap: function(event) {
     var num = 1;
-    var product = this.data.currentProduct;
-    var requireData = index.generateJson(this.data.keys,
-      this.data.currentRequire);
-    product.require = requireData;
-
-
-    var cartProducts = cart.add(product, 1);
     var products = this.data.products;
-    var currentIndex = this.data.currentIndex;
+    var productsIndex = index.getDataSet(event, 'index');
+    if (productsIndex) {
+      var product = products[productsIndex];
+      var currentIndex = productsIndex;
+    } else {
+      var product = this.data.currentProduct;
+      var requireData = index.generateJson(this.data.keys,
+        this.data.currentRequire);
+      product.require = requireData;
+      var currentIndex = this.data.currentIndex;  
+    }
+    
     if (!products[currentIndex].qty) {
       products[currentIndex].qty = 1;
     } else {
       products[currentIndex].qty += 1;
     }
+    var cartProducts = cart.add(product, num);    
     var category = this.setCategoryNum(this.data.currentID,
       this.data.category, num);
     var cartNum = this.data.cartNum + num;
@@ -133,7 +139,7 @@ Page({
     this.setData({
       "cartProducts": cartProducts,
       "category": category,
-      "products": this.data.products,
+      "products": products,
       "productsPrice": cart.getProductsPrice(),
       "cartNum": cartNum,
       "isRequire": false,

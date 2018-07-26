@@ -14,7 +14,7 @@
       </view>
 
       <view class="order-list-main">
-        <image src='{{item.snap_img}}'></image>
+        <image src='{{item.snap_img}}' mode='aspectFill'></image>
         <view>
           <view>{{item.snap_name}}</view>
           <view>共{{item.total_count}}件商品</view>

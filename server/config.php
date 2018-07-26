@@ -25,7 +25,7 @@ $config = [
         'port' => 3306,
         'user' => 'root',
         'db'   => 'cAuth',
-        'pass' => 'appID',
+        'pass' => '',
         'char' => 'utf8mb4'
     ],
 

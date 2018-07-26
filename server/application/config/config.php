@@ -31,10 +31,10 @@ $config['base_url'] = 'xxx';
 | image url prefix
 |--------------------------------------------------------------------------
 */
-$config['img_prefix'] = 'xxx';
+$config['img_prefix'] = '';
 
 //支付后的逻辑处理
-$config['pay_back_url'] = 'xxxx/pay/notify';
+$config['pay_back_url'] = 'xxx/pay/notify';
 
 $config['app_id'] = '';
 

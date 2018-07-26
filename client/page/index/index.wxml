@@ -30,7 +30,9 @@
                 <view class="bottom-qty-box">
                   <view class="qty-text {{item.qty>0?'visible':''}}">
                     {{item.qty}}</view>
-                  <view class="qty-add" data-index='{{index}}' bindtap="onChangeQtyTap">选规格</view>
+                  <view wx:if="{{item.require}}" class="qty-add" data-index='{{index}}' bindtap="onChangeQtyTap">选规格
+                  </view>
+                  <image wx:else class="img-add" src='../../image/icon/add.png' bindtap='onAddTap' data-index='{{index}}'></image>
                 </view>
               </view>
             </view>

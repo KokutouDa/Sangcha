@@ -42,7 +42,6 @@ class Cart extends Base {
     if (!index) {
       product.qty = qty;
       product.selectStatus = true;
-      console.log(products);
       products.push(product);
     } else {
       if (!(products[index].qty <= 0 && qty < 0)) {
